@@ -1,0 +1,33 @@
+{{ form_start(form2,{'attr':{'id':'adit_form'}}) }}
+   
+    {{ form_row(form2.nombre,{'attr':{
+        'class':'mb-3'
+    },
+    'required':false,
+    'id':'edit_nombre'}) }}
+
+     {{ form_row(form2.codigo,{'attr':{
+        'class':'mb-3'
+    },
+    'required':false,
+    'id':'edit_codigo'}) }}  
+    
+{{ form_row(form2.descripcion,{'attr':{
+        'class':'mb-3'
+    },
+    'required':false,
+    'id':'edit_descripcion'}) }}
+   
+
+
+     {{ form_row(form2.codigo_descripcion,{'attr':{
+        'class':'mb-3'
+    },
+    'required':false,
+    'id':'edit_cdescripcion'}) }}
+   
+
+    {{ form_widget(form2.save,{'id':'btnEditForm','label':'Editar'}) }}
+
+
+{{ form_end(form2) }}

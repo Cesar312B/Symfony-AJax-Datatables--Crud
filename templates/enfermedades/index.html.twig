@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enfermedades index{% endblock %}
+
+{% block body %}
+<center>
+<h1>Enfermedades</h1>
+</center> 
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <i class="bi bi-file-earmark-plus-fill"></i>
+</button>
+<p></p>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{ render(controller('App\\Controller\\EnfermedadesController::add')) }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{ render(controller('App\\Controller\\EnfermedadesController::editar')) }}
+      </div>
+    </div>
+  </div>
+</div>
+
+ {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-primary">{{ button_label|default('Guardar') }}</button>
+{{ form_end(form) }}
+<br>
+    
+   <div class="table-responsive" >
+    <table class="records_list table table-striped table-bordered table-hover w-100" id="mydatatable">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Codigo</th>
+                <th>Descripcion</th>
+                <th>Codigo_Descripcion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th><input type="text" class="form-control" placeholder="Filtrar.." /></th>
+                <th><input type="text" class="form-control" placeholder="Filtrar.." /></th>
+                <th><input type="text" class="form-control" placeholder="Filtrar.." /></th>
+                <th><input type="text" class="form-control" placeholder="Filtrar.." /></th>
+                <th><i class="bi bi-bar-chart-steps"></i></th> 
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+<style>
+#mydatatable tfoot input{
+    width: 100% !important;
+}
+#mydatatable tfoot {
+    display: table-header-group !important;
+}
+
+.dataTables_filter {
+	display: none;
+}
+
+/* Move tfood in the upper part of the table */
+tfoot {
+    display: table-header-group;
+}
+</style>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/enfermedades/read.js') }}"></script>
+    
+    {#} 
+    <script src="{{ asset('js/enfermedades/add.js') }}"></script>
+    <script src="{{ asset('js/enfermedades/edit.js') }}"></script>
+    {#}
+{% endblock %}
